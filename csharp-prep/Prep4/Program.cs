@@ -8,6 +8,7 @@ class Program
         int number = 0;
         int total = 0;
         int larger = 0;
+        int smallest = 999999999;
         List<int> numbers = new List<int>();
         do {
             Console.WriteLine("Input a number, I will stop asking when you input a '0'");
@@ -32,11 +33,21 @@ class Program
             total = item + total;
         }
 
+        foreach (int item in numbers)
+        {
+            if (item > 0 & item <= smallest)
+            {
+
+                smallest = item;
+            }
+        }
+
         int size = numbers.Count;
         int average = total / size;
         
         Console.WriteLine($"The total is {total}");
         Console.WriteLine($"The average is {average}");
         Console.WriteLine($"The larger number is {larger}");
+        Console.WriteLine($"The smallest number is {smallest}");
     }
 }
