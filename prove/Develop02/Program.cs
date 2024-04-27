@@ -11,45 +11,54 @@ class Program
         You can do several things, like:
         1. Write
         2. Display
-        3. Load
-        4. Save
+        3. Save
+        4. Load
         5. Quit
 
         What would you like to do?
         ";
 
-        int choice;
+        int choice = 0;
+
+        Journail journail = new Journail();
+        Entry newEntry = new Entry();
 
         do {
+            
             Console.WriteLine(menu);
-            string choiceString = Console.ReadLine();
-            choice = int.Parse(choiceString);
-            Journail journail = new Journail();
-            Entry newEntry = new Entry();
+            string stringChoice = Console.ReadLine();
+            choice = int.Parse(stringChoice);
 
             if (choice == 1){
 
+                newEntry.Display();
                 journail.AddEntry(newEntry);
             }
 
             else if (choice == 2){
-                
+
                 journail.DisplayAll();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
 
             }
             else if (choice == 3){
 
-                Console.WriteLine("Load");
-
-            }
-            else if (choice == 4){
-
-                Console.WriteLine("Input the name of the save file");
+                Console.WriteLine("Please input the name of the file with its extention");
                 string fileName = Console.ReadLine();
                 journail.SaveToFile(fileName);
 
             }
+            else if (choice == 4){
+                
+                Console.WriteLine("Please input the name of the file with its extention");
+                string fileName = Console.ReadLine();
+                journail.LoadFromFile(fileName);
+                
+            }
         } while(choice != 5);
+
+        Console.WriteLine("out");
         
     }
 }

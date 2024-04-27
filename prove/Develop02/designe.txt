@@ -1,0 +1,26 @@
+{
+    entry: [
+        {
+            _date: string
+            _promptText: string
+            _entryText: string
+
+            Display(): void
+        }
+    ],
+    Journail: [
+        {
+            _entry: List<string>
+            AddEntry(new entry: entry): void
+            DisplayAll: void
+            SaveToFile(file: string): void
+            LoadFromFile(file: string): void
+        }
+    ],
+    prompts: [
+        {
+            prompts: list<string>
+            getRandomPrompt():string
+        }
+    ]
+}

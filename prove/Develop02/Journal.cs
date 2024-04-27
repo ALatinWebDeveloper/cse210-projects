@@ -1,45 +1,50 @@
 using System.IO;
 public class Journail {
+
     public List<Entry> _entries = new List<Entry>();
 
-    public void AddEntry(Entry newEntry){
-        Journail items = new Journail();
+    public void AddEntry(Entry _newEntry) {
 
-        //Get the random prompt
-        publicGenerator prompt = new publicGenerator();
-        string question = prompt.GetRandomPrompt();
-
-        //Writes prompt
-        Console.WriteLine(question);
-        newEntry._promptText = question;
-        
-        //Gets Entry text and stores it
-        newEntry._entryText = Console.ReadLine();
-
-        _entries.Add(newEntry);
+        _entries.Add(_newEntry);
     }
 
-    public void DisplayAll(){
-        
-        foreach (Entry item in _entries)
-        {
-            item.Display();
+    public void DisplayAll() {
+
+        foreach (Entry item in _entries) {
+
+            Console.WriteLine($"Date: {item._date}");
+            Console.WriteLine($"Prompt: {item._promptText}");
+            Console.WriteLine($"Answer: {item._entryText}");
+            Console.WriteLine($"");
         }
     }
 
-    public void SaveToFile(string file){
-        string fileName = file;
-        Console.WriteLine("Saving");
+    public void SaveToFile(string filename) {
 
-        using (StreamWriter outputFile = new StreamWriter(fileName, true))
-        
+        using (StreamWriter outputFile = new StreamWriter(filename, true))
         {
-            outputFile.WriteLine(_entries);
-            outputFile.Flush();
+            int entryNumber = 0;
+            foreach (Entry entry in _entries)
+            {
+                outputFile.WriteLine(entry._date);
+                outputFile.WriteLine(entry._promptText);
+                outputFile.WriteLine(entry._entryText);
+                outputFile.WriteLine();
+
+                entryNumber += + 1;
+                Console.WriteLine($"Entry Number ${entryNumber} saved");
+            }
         }
     }
 
-    public void LoadFromFile(string file){
+    public void LoadFromFile(string filename) {
 
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        using (StreamReader reader = new StreamReader(filename))
+            {
+                String journalEntry = reader.ReadToEnd();
+                Console.Write(journalEntry);
+            }
     }
 }

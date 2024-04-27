@@ -1,9 +1,11 @@
 using Microsoft.VisualBasic;
 
 public class publicGenerator {
+    
     public List<string> _prompts = new List<string>();
+    
 
-    public string GetRandomPrompt(){
+    public string GetRandomPrompt() {
 
         _prompts.Add("Lunes");
         _prompts.Add("Martes");
@@ -14,8 +16,9 @@ public class publicGenerator {
         Random random = new Random();
         int randomNumber = random.Next(0, 5);
 
-        string question = _prompts[randomNumber];
+        string _prompt = _prompts[randomNumber];
 
-        return question;
+        return _prompt;
     }
+    
 }
