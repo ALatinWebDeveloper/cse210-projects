@@ -8,7 +8,8 @@ public class Entry {
 
     public void Display() {
 
-        _date = DateTime.Now.ToString("MM--dd--yyyy");
+        _date = DateTime.Now.ToString("dd/MM/yyyy");
+        Console.WriteLine("Remember to answer sincerely.");
         _promptText = promptGenerator.GetRandomPrompt();
         Console.WriteLine(_promptText);
         Console.WriteLine(_date);

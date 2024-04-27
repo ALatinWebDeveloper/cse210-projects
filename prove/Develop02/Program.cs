@@ -4,16 +4,18 @@ using System.IO.Enumeration;
 
 class Program
 {
+
+    /*Made it possible to save and load in and from an csv file*/
     static void Main(string[] args)
     {
         string menu = @"
         Welcome to your Journal!
         You can do several things, like:
-        1. Write
-        2. Display
-        3. Save
-        4. Load
-        5. Quit
+        1. Write a new entry.
+        2. Display all your entries from today in to a file.
+        3. Save today's entries.
+        4. Load all your entries from a file.
+        5. Quit.
 
         What would you like to do?
         ";
@@ -55,6 +57,11 @@ class Program
                 string fileName = Console.ReadLine();
                 journail.LoadFromFile(fileName);
                 
+            }
+            else
+            {
+                choice = 0;
+                Console.WriteLine("You have chosed an invalid option. Please try again.");
             }
         } while(choice != 5);
 
