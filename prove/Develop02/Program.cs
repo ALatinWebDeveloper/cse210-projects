@@ -5,7 +5,12 @@ using System.IO.Enumeration;
 class Program
 {
 
-    /*Made it possible to save and load in and from an csv file*/
+    /*
+    Made it possible to save and load in and from an csv file
+    The program reviews if the program name ends with .cvs
+    A foreach loop starts separating each item with a coma and
+    stores each item in different variable, then prints each item.
+    */
     static void Main(string[] args)
     {
         string menu = @"
