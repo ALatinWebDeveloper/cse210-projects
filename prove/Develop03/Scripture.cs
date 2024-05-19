@@ -2,7 +2,6 @@ public class Scripture {
 
     Reference _reference;
     private List<Word> _words = new List<Word>();
-    List<string> _scriptureTextList;
 
     public Scripture(Reference Reference, string text) {
 
@@ -32,7 +31,7 @@ public class Scripture {
             
             // 
 
-            // Imprimir el número
+            //
 
             _words[censuredIndex] = new Word(censuredWord);
 
@@ -49,18 +48,25 @@ public class Scripture {
 
     public bool IsCompletelyHidden() {
 
-        bool found;
-        
-            if (_words.ToString().Contains("_") == false)
-            {
-                
-                found = false;
-            } else
-            {
-                found = true;
-            }
-        
+        bool found = false;
 
+        List<string> palabras = new List<string>();
+        
+        foreach(Word word in _words)
+        {
+            foreach (var item in _words)
+            {
+                palabras.Add(item.ToString());
+                if (item.Contains('_') == false)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            
+        }
+        
         return found;
     }
 }
