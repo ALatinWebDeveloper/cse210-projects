@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        int activitynbr = 0;
         
         string option = "";
         Activity actividad = new Activity();
@@ -19,7 +20,7 @@ class Program
             4. Quit.
             ");
 
-            option = "2";
+            option = Console.ReadLine();
             int seconds;
 
             switch (option)
@@ -36,6 +37,8 @@ class Program
 
                     breath.Run();
 
+                    activitynbr ++;
+
                     break;
 
                 case "2":
@@ -48,6 +51,9 @@ class Program
                     ReflectionActivity reflection = new ReflectionActivity("Reflection Activity", "This activity will make you reflect on those time when you have shown outstanding strength and resilence. Recognize your power and capability, use it in other aspects in your life", seconds);
                     
                     reflection.Run();
+
+                    activitynbr ++;
+
                     break;
 
                 case "3":
@@ -62,15 +68,23 @@ class Program
 
                     Listing.Run();
 
+                    activitynbr ++;
+
                     break;
 
                 case "4":
-                    Console.WriteLine("Goo Bye");
+                    Console.WriteLine($"You have completed {activitynbr} activities.");
+                    Console.WriteLine("Good Bye");
                     break;
 
                 default:
-                Console.WriteLine("Please input a valid number");
+                    Console.WriteLine("Please input a valid number");
                 break;
+            }
+
+            if ((option == "1") && (option == "2" ) && (option == "3") && (option == "4"))
+            {
+                Console.WriteLine("Please input a valid number :c");
             }
             
         } while (option != "4");
