@@ -5,6 +5,8 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score;
 
+    private int _goalsCompleted;
+
     public GoalManager()
     {
         
@@ -62,15 +64,6 @@ public class GoalManager
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
         
-    }
-
-    public void ListGoalDetails()
-    {
-        foreach (Goal item in _goals)
-        {
-            string goalDesc = item.GetDetailsString();
-            Console.Write($"({goalDesc})");
-        }
     }
 
     public void CreateGoal()
@@ -144,6 +137,9 @@ public class GoalManager
             _goals.Remove(_goals[goalIndex]);
             Console.ReadKey();
             Console.WriteLine("Press any key to continue.");
+
+            IncreaseGoals();
+            Console.WriteLine($"You have completed {GoalsCompleted()} goals");
         }
         else if (goalToComplete is EternalGoal eternalGoal)
         {
@@ -156,6 +152,9 @@ public class GoalManager
             _goals.Remove(_goals[goalIndex]);
             Console.ReadKey();
             Console.WriteLine("Press any key to continue.");
+
+            IncreaseGoals();
+            Console.WriteLine($"You have completed {GoalsCompleted()} goals");
         }
         else if (goalToComplete is CheckListGoal checkListGoal)
         {
@@ -170,6 +169,10 @@ public class GoalManager
                 Console.WriteLine($"Congratulations you have earned a bonus of {bonusEarned} points for completing the task");
                 _score += pointsEarned + bonusEarned;
                 Console.WriteLine($"You have {_score} points");
+
+                Console.WriteLine("");
+                IncreaseGoals();
+                Console.WriteLine($"You have completed {GoalsCompleted()} goals");
 
                 _goals.Remove(_goals[goalIndex]);
                 Console.ReadKey();
@@ -255,5 +258,15 @@ public class GoalManager
             }
 
         }
+    }
+
+    public int GoalsCompleted()
+    {
+        return _goalsCompleted;
+    }
+
+    public void IncreaseGoals()
+    {
+        _goalsCompleted += 1;
     }
 }
